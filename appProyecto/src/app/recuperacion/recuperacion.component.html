@@ -1,0 +1,10 @@
+<div class="row justify-content-center">
+	<form class="col-6 mb-5">
+		<div class="form-group">
+			<input type="email" class="form-control" placeholder="Correo" (input)="correo($event.target.value)">
+		</div>
+		<button class="btn btn-success" type="button" (click)="recuperar()">Recuperar contraseña</button>
+		<br>
+		<code>{{datos | json}}</code>
+	</form>
+</div>
