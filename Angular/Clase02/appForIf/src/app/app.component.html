@@ -1,0 +1,10 @@
+<button (click)="agregarUsuario()" [disabled]="desactivado">Agregar</button>
+
+<div *ngFor="let usuario of usuarios">
+	<h3>{{usuario.name}}</h3>
+	{{usuario.username}}
+	<hr>
+</div>
+
+<app-usuario *ngFor="let usuario of usuarios" [userName]="usuario.username">
+</app-usuario>
