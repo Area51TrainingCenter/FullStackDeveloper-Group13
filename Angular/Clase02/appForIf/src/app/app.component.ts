@@ -7,10 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 	usuarios = [
-		{ username: "usuario01", name: "nombre01" },
-		{ username: "usuario02", name: "nombre02" },
-		{ username: "usuario03", name: "nombre03" },
-		{ username: "usuario04", name: "nombre04" }
+		{ username: "usuario01", name: "nombre01", email: "correo1@abc.com" },
+		{ username: "usuario02", name: "nombre02", email: "correo2@abc.com" },
+		{ username: "usuario03", name: "nombre03", email: "correo3@abc.com" },
+		{ username: "usuario04", name: "nombre04", email: "correo4@abc.com" }
 	]
 
 	desactivado: boolean = false
@@ -19,7 +19,7 @@ export class AppComponent {
 	}
 
 	agregarUsuario() {
-		this.usuarios.push({ username: "usuario05", name: "nombre05" })
+		this.usuarios.push({ username: "usuario05", name: "nombre05", email: "correox@abc.com" })
 	}
 
 	eliminarUsuario(indice: number) {

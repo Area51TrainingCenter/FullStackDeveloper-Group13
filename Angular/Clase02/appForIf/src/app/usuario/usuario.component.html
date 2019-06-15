@@ -3,3 +3,13 @@
 </p>
 <span>{{user.name}}</span>
 <button (click)="eliminar()">Eliminar</button>
+<button (click)="mostrar=!mostrar">Mas info</button>
+<p *ngIf="mostrar; else mostrarMensaje">
+	{{user.email}}
+</p>
+<ng-template #mostrarMensaje>
+	<p>
+		Clic en mas info
+	</p>
+</ng-template>
+<hr>

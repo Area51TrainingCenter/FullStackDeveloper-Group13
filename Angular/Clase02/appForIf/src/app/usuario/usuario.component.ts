@@ -12,6 +12,8 @@ export class UsuarioComponent implements OnInit {
 	@Input("usuario") user: {}
 	@Input() indice: number
 
+	mostrar: boolean = false
+
 	@Output() onEliminar = new EventEmitter<number>()
 
 	constructor() { }
