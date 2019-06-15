@@ -1,3 +1,12 @@
+<input type="text" [value]="nombre">
+<br>
+<input type="text" [ngModel]="nombre" (ngModelChange)="nombre=$event">
+<br>
+<input type="text" [(ngModel)]="nombre">
+<br>
+<span>{{nombre}}</span>
+<hr>
+
 <button (click)="agregarUsuario()" [disabled]="desactivado">Agregar</button>
 
 <!-- <div *ngFor="let usuario of usuarios">

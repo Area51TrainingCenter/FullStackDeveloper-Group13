@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+	nombre: string = "Curso FullStack"
+
 	usuarios = [
 		{ username: "usuario01", name: "nombre01", email: "correo1@abc.com" },
 		{ username: "usuario02", name: "nombre02", email: "correo2@abc.com" },
