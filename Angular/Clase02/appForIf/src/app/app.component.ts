@@ -21,4 +21,8 @@ export class AppComponent {
 	agregarUsuario() {
 		this.usuarios.push({ username: "usuario05", name: "nombre05" })
 	}
+
+	eliminarUsuario(indice: number) {
+		this.usuarios.splice(indice, 1)
+	}
 }

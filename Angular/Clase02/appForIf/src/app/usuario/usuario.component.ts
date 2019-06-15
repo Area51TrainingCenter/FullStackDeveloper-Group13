@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
 	selector: 'app-usuario',
@@ -7,11 +7,20 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class UsuarioComponent implements OnInit {
 
-	@Input() userName
+	@Input() userName: string
+	@Input() name: string
+	@Input("usuario") user: {}
+	@Input() indice: number
+
+	@Output() onEliminar = new EventEmitter<number>()
 
 	constructor() { }
 
 	ngOnInit() {
+	}
+
+	eliminar() {
+		this.onEliminar.emit(this.indice)
 	}
 
 }
