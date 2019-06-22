@@ -7,7 +7,7 @@
 	</tr>
 	<tr *ngFor="let novela of novelas">
 		<td>{{novela.titulo}}</td>
-		<td>{{novela.intro()}}</td>
+		<td>{{intro(novela.descripcion)}}</td>
 		<td>{{novela.autor}}</td>
 		<td>{{novela.anno}}</td>
 	</tr>
