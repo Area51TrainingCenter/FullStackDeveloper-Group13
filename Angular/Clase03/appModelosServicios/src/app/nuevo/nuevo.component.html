@@ -1,11 +1,11 @@
 <form>
-	<input type="text" placeholder="Titulo" [(ngModel)]="novela.titulo">
+	<input type="text" placeholder="Titulo" [(ngModel)]="novela.titulo" name="titulo">
 	<br>
-	<input type="text" placeholder="Descripcion" [(ngModel)]="novela.descripcion">
+	<input type="text" placeholder="Descripcion" [(ngModel)]="novela.descripcion" name="descripcion">
 	<br>
-	<input type="text" placeholder="Autor" [(ngModel)]="novela.autor">
+	<input type="text" placeholder="Autor" [(ngModel)]="novela.autor" name="autor">
 	<br>
-	<input type="text" placeholder="Anno" [(ngModel)]="novela.anno">
+	<input type="text" placeholder="Anno" [(ngModel)]="novela.anno" name="anno">
 	<br>
 	<button (click)="grabar()">Grabar</button>
 </form>

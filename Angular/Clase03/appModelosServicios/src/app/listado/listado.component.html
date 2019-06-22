@@ -4,11 +4,15 @@
 		<th>Descripcion</th>
 		<th>Autor</th>
 		<th>Anno</th>
+		<th></th>
 	</tr>
-	<tr *ngFor="let novela of novelas">
+	<tr *ngFor="let novela of novelas; let indice=index">
 		<td>{{novela.titulo}}</td>
 		<td>{{intro(novela.descripcion)}}</td>
 		<td>{{novela.autor}}</td>
 		<td>{{novela.anno}}</td>
+		<td>
+			<button (click)="eliminar(indice)">Eliminar</button>
+		</td>
 	</tr>
 </table>

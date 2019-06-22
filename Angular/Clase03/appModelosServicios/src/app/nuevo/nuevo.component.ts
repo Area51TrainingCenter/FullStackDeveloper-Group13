@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Inovela } from '../modelos/inovela';
+import { NovelaService } from '../servicios/novela.service';
 
 @Component({
 	selector: 'app-nuevo',
@@ -11,15 +12,21 @@ export class NuevoComponent implements OnInit {
 	descripcion: string
 	autor: string
 	anno: number */
-	novela: Inovela
+	novela: Inovela = {}
 
-	constructor() { }
+	//servicio: NovelaService
+
+	constructor(private servicio: NovelaService) {
+		//this.servicio = ns
+	}
 
 	ngOnInit() {
 	}
 
 	grabar() {
-		console.log(this.novela)
+		this.servicio.insertar(this.novela)
+		this.novela = {}
+		//console.log(this.novela)
 	}
 
 }
