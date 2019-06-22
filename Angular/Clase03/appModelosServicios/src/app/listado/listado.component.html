@@ -1,0 +1,14 @@
+<table>
+	<tr>
+		<th>Titulo</th>
+		<th>Descripcion</th>
+		<th>Autor</th>
+		<th>Anno</th>
+	</tr>
+	<tr *ngFor="let novela of novelas">
+		<td>{{novela.titulo}}</td>
+		<td>{{novela.intro()}}</td>
+		<td>{{novela.autor}}</td>
+		<td>{{novela.anno}}</td>
+	</tr>
+</table>
