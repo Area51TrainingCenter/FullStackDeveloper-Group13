@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-6">
+			<button class="btn btn-success" (click)="listar(1)">Cursos Abiertos</button>
+			<button class="btn btn-primary" (click)="listar(2)">Cursos Próximos</button>
+		</div>
+	</div>
+	<div class="row justify-content-center">
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>Curso</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let curso of cursos">
+					<td>{{curso.curso}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
