@@ -7,12 +7,13 @@ import { ActivatedRoute } from '@angular/router';
 	styleUrls: ['./edicion.component.css']
 })
 export class EdicionComponent implements OnInit {
+	id: number
 
 	constructor(private rutaActiva: ActivatedRoute) { }
 
 	ngOnInit() {
-		const id = this.rutaActiva.snapshot.params.id
-		console.log("id = ", id)
+		this.id = +this.rutaActiva.snapshot.params.id + 10
+		//console.log("id = ", id)
 	}
 
 }

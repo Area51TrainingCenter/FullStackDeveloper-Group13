@@ -7,10 +7,11 @@ import { EdicionComponent } from './edicion/edicion.component';
 
 import { Routes, RouterModule } from "@angular/router";
 import { NoEncontradoComponent } from './no-encontrado/no-encontrado.component';
-import { NuevoComponent } from './nuevo/nuevo.component'
+import { NuevoComponent } from './nuevo/nuevo.component';
+import { HomeComponent } from './home/home.component'
 
 const rutas: Routes = [
-	{ path: "", component: ListadoComponent },
+	{ path: "", component: HomeComponent },
 	{
 		path: "curso", children: [
 			{ path: "", component: ListadoComponent },
@@ -28,7 +29,8 @@ const rutas: Routes = [
 		ListadoComponent,
 		EdicionComponent,
 		NoEncontradoComponent,
-		NuevoComponent
+		NuevoComponent,
+		HomeComponent
 	],
 	imports: [
 		BrowserModule,
