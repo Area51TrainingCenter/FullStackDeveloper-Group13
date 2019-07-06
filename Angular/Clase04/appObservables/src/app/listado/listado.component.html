@@ -1,8 +1,8 @@
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-6">
-			<button class="btn btn-success" (click)="listar(1)">Cursos Abiertos</button>
-			<button class="btn btn-primary" (click)="listar(2)">Cursos Próximos</button>
+			<button class="btn btn-success" (click)="listar(1)" [disabled]="!dataCargada">Cursos Abiertos</button>
+			<button class="btn btn-primary" (click)="listar(2)" [disabled]="!dataCargada">Cursos Próximos</button>
 		</div>
 	</div>
 	<div class="row justify-content-center">

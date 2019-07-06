@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
+import { map, retry } from "rxjs/operators"
 import { Curso } from './cursos.interface';
 
 @Component({
@@ -11,6 +12,8 @@ export class ListadoComponent implements OnInit {
 	cursosAbiertos: Curso[] = []
 	cursosCerrados: Curso[] = []
 	cursos: Curso[] = []
+
+	dataCargada: boolean = false
 
 	constructor() { }
 
@@ -39,15 +42,32 @@ export class ListadoComponent implements OnInit {
 						{ curso: "MongoDB", estado: 1 }
 					])
 				}, 6000)
+
+				setTimeout(() => {
+					observador.complete()
+				}, 7000)
 			}
 		)
 
 		obs
+			.pipe(
+				retry(3),
+				map(el => {
+					const transformado = el.map(item => {
+						item.curso = item.curso.toUpperCase()
+						return item
+					})
+
+					return transformado
+				})
+			)
 			.subscribe(
 				(data: Curso[]) => {
 					const abiertos = data.filter(curso => curso.estado == 1)
 					this.cursosAbiertos = [...this.cursosAbiertos, ...abiertos]
-				}
+				},
+				null,
+				() => this.dataCargada = true
 			)
 
 		obs
