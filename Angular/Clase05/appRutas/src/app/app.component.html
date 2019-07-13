@@ -1,0 +1,28 @@
+<ul>
+	<li>
+		<a routerLink="/" routerLinkActive="activo" [routerLinkActiveOptions]="{exact: true}">Home</a>
+	</li>
+	<li>
+		<a routerLink="/curso" routerLinkActive="activo" [routerLinkActiveOptions]="{exact: true}">Listado</a>
+	</li>
+	<li>
+		<a routerLink="/curso/nuevo" routerLinkActive="activo">Nuevo</a>
+	</li>
+	<li>
+		<a [routerLink]="['/curso','edicion',50]" routerLinkActive="activo">Edición 50</a>
+	</li>
+	<li>
+		<a [routerLink]="['/curso','edicion',50]" [queryParams]="{titulo: 'Curso'}" routerLinkActive="activo">Edición 50 con QueryString</a>
+	</li>
+	<li>
+		<a [routerLink]="['/curso','edicion',50]" [queryParams]="{titulo: 'Curso'}" fragment="admin" routerLinkActive="activo">Edición 50 con QueryString y Fragmento</a>
+	</li>
+	<li>
+		<a routerLink="/curso/edicion/50?titulo=Curso" routerLinkActive="activo">Ruta con errores</a>
+	</li>
+	<li>
+		<a href="/">Home con href</a>
+	</li>
+</ul>
+{{fecha}}
+<router-outlet></router-outlet>

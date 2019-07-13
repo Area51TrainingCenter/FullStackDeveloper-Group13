@@ -1,0 +1,12 @@
+a
+a:link,
+a:visited,
+a:active,
+a:hover {
+	color: green;
+	text-decoration: underline
+}
+
+a.activo {
+	color: red
+}
