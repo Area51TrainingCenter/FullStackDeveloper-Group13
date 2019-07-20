@@ -10,6 +10,7 @@
 					<input type="text" class="form-control" placeholder="Correo" name="correo" formControlName="correo">
 					<span *ngIf="grupo.get('correo').invalid && grupo.get('correo').touched && grupo.get('correo').hasError('required')">El correo es requerido</span>
 					<span *ngIf="grupo.get('correo').invalid && grupo.get('correo').touched && grupo.get('correo').hasError('email')">El formato debe ser de correo</span>
+					<span *ngIf="grupo.get('correo').invalid && grupo.get('correo').touched && grupo.get('correo').hasError('correoGratuito')">No puede ingresar un correo gratuito</span>
 				</div>
 				<div class="form-group">
 					<input type="password" class="form-control" placeholder="Contrasena" name="contrasena" formControlName="contrasena">
@@ -17,12 +18,12 @@
 				</div>
 				<div class="form-group">
 					<input type="password" class="form-control" placeholder="Confirmacion contrasena" name="confirmacion" formControlName="confirmacion">
-					<span *ngIf="grupo.get('confirmacion').invalid && grupo.get('confirmacion').touched">La confirmacion es requerida</span>
+					<span *ngIf="grupo.get('confirmacion').invalid && grupo.get('confirmacion').touched && grupo.get('confirmacion').hasError('required')">La confirmacion es requerida</span>
+					<span *ngIf="grupo.get('confirmacion').invalid && grupo.get('confirmacion').touched && grupo.get('confirmacion').hasError('contrasenaNoCoincide')">La contrasena y la confirmación no coinciden</span>
 				</div>
 				<div class="form-check form-check-inline">
 					<input type="checkbox" class="form-check-input" formControlName="terminos" name="terminos">
 					<label class="form-check-label">Acepto términos y condiciones</label>
-
 				</div>
 				<span *ngIf="grupo.get('terminos').invalid &&grupo.get('terminos').touched">Debe aceptar los términos y condiciones</span>
 				<div>
