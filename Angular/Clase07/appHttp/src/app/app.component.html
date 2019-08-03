@@ -14,3 +14,20 @@
 		</tr>
 	</tbody>
 </table>
+
+<button (click)="listarUsuarios()">Usuarios</button>
+
+<table>
+	<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Correo</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let usuario of usuarios">
+			<td>{{usuario.name}}</td>
+			<td>{{usuario.email}}</td>
+		</tr>
+	</tbody>
+</table>

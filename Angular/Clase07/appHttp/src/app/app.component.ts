@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AlumnoService } from './alumno.service';
 import { pluck } from "rxjs/operators"
+import { UsuariosService } from './usuarios.service';
 
 @Component({
 	selector: 'app-root',
@@ -9,8 +10,9 @@ import { pluck } from "rxjs/operators"
 })
 export class AppComponent {
 	alumnos: any[]
+	usuarios: any[]
 
-	constructor(private alumnoService: AlumnoService) { }
+	constructor(private alumnoService: AlumnoService, private usuarioService: UsuariosService) { }
 
 	listarAlumnos() {
 		this.alumnoService.listar()
@@ -19,6 +21,13 @@ export class AppComponent {
 			)
 			.subscribe(
 				(data: any) => this.alumnos = data
+			)
+	}
+
+	listarUsuarios() {
+		this.usuarioService.listar()
+			.subscribe(
+				(data: any) => this.usuarios = data
 			)
 	}
 }
