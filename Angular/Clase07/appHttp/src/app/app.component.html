@@ -1,0 +1,16 @@
+<button (click)="listarAlumnos()">Obtener Lista de Alumnos</button>
+
+<table>
+	<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Apellido</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let alumno of alumnos">
+			<td>{{alumno.nombre}}</td>
+			<td>{{alumno.apellido}}</td>
+		</tr>
+	</tbody>
+</table>
