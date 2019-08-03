@@ -1,19 +1,42 @@
+<form [formGroup]="grupo">
+	<input type="text" placeholder="Nombre" name="nombre" formControlName="nombre">
+	<br>
+	<input type="text" placeholder="Apellido" name="apellido" formControlName="apellido">
+	<br>
+	<button (click)="agregarAlumno()" [disabled]="grupo.invalid">Agregar alumno</button>
+</form>
+
 <button (click)="listarAlumnos()">Obtener Lista de Alumnos</button>
 
 <table>
 	<thead>
 		<tr>
+			<th>ID</th>
 			<th>Nombre</th>
 			<th>Apellido</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr *ngFor="let alumno of alumnos">
+			<td>{{alumno._id}}</td>
 			<td>{{alumno.nombre}}</td>
 			<td>{{alumno.apellido}}</td>
+			<td>
+				<button (click)="editar(alumno)">Editar</button>
+				<button (click)="eliminar(alumno._id)">Eliminar</button>
+			</td>
 		</tr>
 	</tbody>
 </table>
+
+<form [formGroup]="grupoEdicion">
+	<input type="text" placeholder="Nombre" name="nombre" formControlName="nombre">
+	<br>
+	<input type="text" placeholder="Apellido" name="apellido" formControlName="apellido">
+	<br>
+	<button (click)="actualizarAlumno()" [disabled]="grupoEdicion.invalid">Actualizar alumno</button>
+</form>
 
 <button (click)="listarUsuarios()">Usuarios</button>
 
@@ -25,7 +48,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let usuario of usuarios">
+		<tr *ngFor="let usuario of usuarios | async">
 			<td>{{usuario.name}}</td>
 			<td>{{usuario.email}}</td>
 		</tr>
