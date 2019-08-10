@@ -1,5 +1,10 @@
 <div class="container">
 	<div class="row justify-content-center">
+		<form class="col-8">
+			<div class="form-group">
+				<input type="text" class="form-control" [(ngModel)]="textoABuscar" name="texto">
+			</div>
+		</form>
 		<table class="col-8 table table-hover table-striped">
 			<thead class="thead-dark">
 				<tr>
@@ -10,11 +15,11 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ngFor="let novela of novelas">
+				<tr *ngFor="let novela of novelas | buscador:textoABuscar">
 					<td>{{novela.titulo}}</td>
-					<td>{{novela.autor}}</td>
-					<td>{{novela.fecha}}</td>
-					<td>{{novela.sinopsis}}</td>
+					<td>{{novela.autor | lowercase}}</td>
+					<td>{{novela.fecha | date:"EEEE dd, MMMM / yyyy" | uppercase}}</td>
+					<td>{{novela.sinopsis | reductor:10:"leer mas"}}</td>
 				</tr>
 			</tbody>
 		</table>

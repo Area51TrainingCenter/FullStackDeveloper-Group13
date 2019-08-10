@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+	textoABuscar: string = ""
 	novelas = [
 		{ titulo: "El caballero Carmelo", autor: "Abraham Valdelomar", sinopsis: "Narra la historia de un gallo viejo llamado Carmelo que pelea con un gallo joven llamado el Aji Seco", fecha: new Date() },
 		{ titulo: "El Perfume", autor: "Patrick Suskind", sinopsis: "Cuenta la historia de un asesino que mataba mujeres para robar su esencia y crear el mejor perfume del mundo", fecha: new Date() },
