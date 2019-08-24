@@ -1,17 +1,20 @@
 /* import { inicializar } from "bin/app" */
 import * as app from "./bin/app"
+import { logger } from "./utils/log.util"
 
 const iniciar = async () => {
 	/* 	app.inicializar()
 			.then(() => console.log("Servidor ejecutándose"))
 			.catch(error => console.log(error)) */
 
+	logger.info("Aplicación inicializándose")
+
 	try {
-		console.log("Servidor inicializándose")
+		logger.info("Servidor inicializándose")
 		await app.inicializar()
-		console.log("Servidor ejecutándose en el puerto 3000")
+		logger.info("Servidor ejecutándose en el puerto 3000")
 	} catch (error) {
-		console.error(error)
+		logger.error(error)
 		process.exit(1)
 	}
 }
@@ -22,15 +25,15 @@ const apagar = async (err = null) => {
 	let error = err
 
 	try {
-		console.log("Servidor cerrándose")
+		logger.info("Servidor cerrándose")
 		await app.cerrar()
-		console.log("Servidor cerrado")
+		logger.info("Servidor cerrado")
 	} catch (err) {
-		console.log("Ocurrió un error al cerrar", err)
+		logger.error("Ocurrió un error al cerrar", err)
 		error = error || err
 	}
 
-	console.log("Proceso de cerrado activo")
+	logger.info("Proceso de cerrado activo")
 
 	if (error) process.exit(1)
 	else process.exit(0)
@@ -38,16 +41,16 @@ const apagar = async (err = null) => {
 }
 
 process.on("SIGTERM", () => {
-	console.log("SIGTERM recibido")
+	logger.info("SIGTERM recibido")
 	apagar()
 })
 
 process.on("SIGINT", () => {
-	console.log("SIGINT recibido")
+	logger.info("SIGINT recibido")
 	apagar()
 })
 
 process.on("uncaughtException", err => {
-	console.log("uncaught exception")
+	logger.info("uncaught exception")
 	apagar(err)
 })
