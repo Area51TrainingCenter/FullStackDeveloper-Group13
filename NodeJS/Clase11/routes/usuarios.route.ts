@@ -1,4 +1,6 @@
 import * as express from "express"
+import * as Joi from "@hapi/joi"
+import { UsuariosSchema, validate } from "../validators"
 
 const RouteUsuarios = express.Router()
 
@@ -19,7 +21,24 @@ RouteUsuarios.get("/", (req, res) => {
 	res.json(data)
 })
 
-RouteUsuarios.post("/", (req, res) => {
+RouteUsuarios.post("/:id", validate(UsuariosSchema.USUARIOS_POST_SCHEMA), (req, res) => {
+
+
+	/* const esquema = Joi.object().keys({
+		nombres: Joi.string().required(),
+		apellidoPaterno: Joi.string().required(),
+		apellidoMaterno: Joi.string(),
+		contrasena: Joi.string().regex(/^[a-z]{2,3}[0-9]{5,5}$/).required()
+	})
+
+	const esquema2 = Joi.object().keys({
+		id: Joi.number().required()
+	})
+
+	const validacion = Joi.validate(req.body, esquema) */
+
+
+
 	res.status(201).json({
 		status: 201,
 		message: "Usuario creado"

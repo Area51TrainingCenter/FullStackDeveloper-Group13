@@ -1,6 +1,7 @@
 import * as http from "http"
 import * as express from "express"
 import * as helmet from "helmet"
+import * as bodyParser from "body-parser"
 import { Application } from "express"
 import { RouteUsuarios } from "../routes"
 
@@ -12,6 +13,8 @@ const inicializar = (): Promise<any> => {
 		httpServer = http.createServer(app)
 
 		app.use(helmet())
+		app.use(bodyParser.json())
+		app.use(bodyParser.urlencoded({ extended: true }))
 
 		/*app.use((req, res, next) => {
 			const token: string = "xxxxjalkdjflkjaldkfjalkdjlaksdjlaskd"
