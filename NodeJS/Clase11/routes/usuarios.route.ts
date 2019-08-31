@@ -1,59 +1,20 @@
 import * as express from "express"
 import * as Joi from "@hapi/joi"
-import { UsuariosSchema, validate } from "../validators"
+import { UsuariosSchema, validate, SeguridadSchema } from "../validators"
+import { UsuariosController } from "../controllers"
+import { AuthenticationSecurity } from "../securities";
 
 const RouteUsuarios = express.Router()
+const usuariosController = new UsuariosController()
 
-RouteUsuarios.get("/", (req, res) => {
-	const data = {
-		status: 200,
-		message: "Lista de usuarios",
-		results: [
-			{ name: "Walter" },
-			{ name: "Pedro" },
-			{ name: "Alfonsina" }
-		]
-	}
+RouteUsuarios.get("/", usuariosController.listar)
 
-	/* const serializado = JSON.stringify(data)
-	res.type("application/json").status(200).send(serializado) */
-	//res.status(200).json(data)
-	res.json(data)
-})
+RouteUsuarios.get("/:id", validate(UsuariosSchema.USUARIOS_GET_SCHEMA), usuariosController.detallar)
 
-RouteUsuarios.post("/:id", validate(UsuariosSchema.USUARIOS_POST_SCHEMA), (req, res) => {
+RouteUsuarios.post("/:id", validate(SeguridadSchema.AUTENTICACION_SCHEMA), AuthenticationSecurity, validate(UsuariosSchema.USUARIOS_POST_SCHEMA), usuariosController.insertar)
 
+RouteUsuarios.delete("/:id", validate(UsuariosSchema.USUARIOS_DELETE_SCHEMA), usuariosController.eliminar)
 
-	/* const esquema = Joi.object().keys({
-		nombres: Joi.string().required(),
-		apellidoPaterno: Joi.string().required(),
-		apellidoMaterno: Joi.string(),
-		contrasena: Joi.string().regex(/^[a-z]{2,3}[0-9]{5,5}$/).required()
-	})
+RouteUsuarios.put("/:id", validate(UsuariosSchema.USUARIOS_PUT_SCHEMA), usuariosController.modificar)
 
-	const esquema2 = Joi.object().keys({
-		id: Joi.number().required()
-	})
-
-	const validacion = Joi.validate(req.body, esquema) */
-
-
-
-	res.status(201).json({
-		status: 201,
-		message: "Usuario creado"
-	})
-})
-
-RouteUsuarios.get("/activos", (req, res) => {
-	res.status(200)
-		.json(
-			[
-				{ nombre: "Claudia" },
-				{ nombre: "Jana" }
-			]
-		)
-})
-
-//export { RouteUsuarios }
 export default RouteUsuarios

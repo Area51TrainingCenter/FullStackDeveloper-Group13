@@ -15,6 +15,34 @@ class UsuariosSchema {
 			rol: Joi.string().required()
 		})
 	}
+
+	static USUARIOS_GET_SCHEMA = {
+		params: Joi.object().keys({
+			id: Joi.number().required()
+		})
+	}
+
+	static USUARIOS_DELETE_SCHEMA = {
+		params: Joi.object().keys({
+			id: Joi.number().required()
+		})
+	}
+
+	static USUARIOS_PUT_SCHEMA = {
+		params: Joi.object().keys({
+			id: Joi.number().required()
+		}),
+		body: Joi.object().keys({
+			nombres: Joi.string().required(),
+			apellidoPaterno: Joi.string().required(),
+			apellidoMaterno: Joi.string(),
+			contrasena: Joi.string().regex(/^[a-z]{2,3}[0-9]{5,5}$/).required(),
+			locales: Joi.array().items(Joi.object().keys({
+				lat: Joi.number().required(),
+				lng: Joi.number().required()
+			})).required()
+		})
+	}
 }
 
 export default UsuariosSchema
