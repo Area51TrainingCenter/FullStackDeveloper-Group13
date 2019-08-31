@@ -1,6 +1,8 @@
 import * as http from "http"
 import * as express from "express"
+import * as helmet from "helmet"
 import { Application } from "express"
+import { RouteUsuarios } from "../routes"
 
 let httpServer: http.Server
 
@@ -9,6 +11,30 @@ const inicializar = (): Promise<any> => {
 		const app: Application = express()
 		httpServer = http.createServer(app)
 
+		app.use(helmet())
+
+		/*app.use((req, res, next) => {
+			const token: string = "xxxxjalkdjflkjaldkfjalkdjlaksdjlaskd"
+
+			if (token != "") return next()
+
+			return res.status(401).json({
+				status: 401,
+				message: "Usuario no autenticado"
+			})
+		})
+
+		app.use((req, res, next) => {
+			const rol: string = "operador"
+
+			if (rol == "admin") return next()
+
+			res.status(409).json({
+				status: 409,
+				message: "No tiene los permisos requeridos"
+			})
+		})*/
+
 		app.get("/", (req, res) => {
 			res
 				.type("text/html")
@@ -16,22 +42,9 @@ const inicializar = (): Promise<any> => {
 				.send("<h1>Hola Mundo</h1>")
 		})
 
-		app.get("/usuarios", (req, res) => {
-			const data = {
-				status: 200,
-				message: "Lista de usuarios",
-				results: [
-					{ name: "Walter" },
-					{ name: "Pedro" },
-					{ name: "Alfonsina" }
-				]
-			}
+		app.use("/usuarios", RouteUsuarios)
 
-			/* const serializado = JSON.stringify(data)
-			res.type("application/json").status(200).send(serializado) */
-			//res.status(200).json(data)
-			res.json(data)
-		})
+
 
 		httpServer.listen(3000)
 			.on("listening", () => resolve())

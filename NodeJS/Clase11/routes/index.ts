@@ -1,0 +1,1 @@
+export { default as RouteUsuarios } from "./usuarios.route"
