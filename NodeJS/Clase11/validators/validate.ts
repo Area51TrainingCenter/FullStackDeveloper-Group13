@@ -7,8 +7,9 @@ const validate = schema => {
 		["body", "params", "query", "headers"].forEach(el => {
 			if (schema[el]) aValidar[el] = req[el]
 		})
+		console.log(schema["body"])
 
-		const validacion = Joi.validate(aValidar, schema)
+		const validacion = schema["body"].validate(aValidar, schema)
 
 		if (validacion.error) return res.status(411).json(validacion.error.details)
 
